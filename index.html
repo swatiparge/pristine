@@ -436,6 +436,95 @@
         .volt-solid {
             background-color: #f9c91b;
         }
+
+        /* ── Hero "Electrical Solutions" animated text ── */
+        @keyframes electricPulse {
+            0%   { text-shadow: 0 0 8px #f9c91b, 0 0 20px #f9c91b88, 0 0 40px #f9c91b44; color: #f9c91b; }
+            25%  { text-shadow: 0 0 14px #ffe066, 0 0 35px #f9c91bbb, 0 0 60px #f9c91b66; color: #ffe066; }
+            50%  { text-shadow: 0 0 8px #f9c91b, 0 0 20px #f9c91b88, 0 0 40px #f9c91b44; color: #f9c91b; }
+            75%  { text-shadow: 0 0 18px #fff0a0, 0 0 40px #f9c91bcc, 0 0 70px #f9c91b88; color: #fff0a0; }
+            100% { text-shadow: 0 0 8px #f9c91b, 0 0 20px #f9c91b88, 0 0 40px #f9c91b44; color: #f9c91b; }
+        }
+        @keyframes flickerIn {
+            0%   { opacity: 0; text-shadow: none; }
+            10%  { opacity: 1; }
+            15%  { opacity: 0.3; }
+            20%  { opacity: 1; }
+            25%  { opacity: 0.6; }
+            30%  { opacity: 1; }
+            100% { opacity: 1; }
+        }
+        .hero-electric-text {
+            display: inline-block;
+            color: #f9c91b;
+            animation: flickerIn 0.8s ease-out forwards, electricPulse 3s ease-in-out 0.8s infinite;
+            text-shadow: 0 0 8px #f9c91b, 0 0 20px #f9c91b88;
+            font-style: italic;
+        }
+
+        /* ── Gallery section ── */
+        .gallery-filter-btn {
+            padding: 0.4rem 1.1rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border: 1.5px solid #e2e8f0;
+            background: transparent;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-radius: 0.125rem;
+        }
+        .gallery-filter-btn.active, .gallery-filter-btn:hover {
+            background: #f9c91b;
+            border-color: #f9c91b;
+            color: #1a1a1a;
+        }
+        .gallery-item {
+            transition: opacity 0.35s, transform 0.35s;
+        }
+        .gallery-item.hidden {
+            display: none;
+        }
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15,23,42,0.85) 0%, transparent 55%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.25rem;
+        }
+        .gallery-card:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* ── Testimonial mobile fix ── */
+        @media (max-width: 767px) {
+            .testimonial-card {
+                padding: 2rem 1.25rem !important;
+            }
+            .testimonial-inner {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+            .testimonial-avatar-wrap {
+                flex-shrink: 0;
+            }
+            .testimonial-body {
+                text-align: center;
+                width: 100%;
+            }
+            .testimonial-stars {
+                justify-content: center;
+            }
+            .testimonial-quote {
+                font-size: 1.1rem !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-background text-on-background font-body antialiased">
@@ -449,6 +538,7 @@
 <a class="font-headline font-bold tracking-tight text-[#f9c91b] dark:text-[#f9c91b] border-b-2 border-[#f9c91b] pb-1 hover:translate-y-[-2px] transition-transform duration-200" href="#">Home</a>
 <a class="font-headline font-bold tracking-tight text-slate-600 dark:text-slate-300 hover:text-[#f9c91b] dark:hover:text-[#f9c91b] transition-colors hover:translate-y-[-2px] transition-transform duration-200" href="#services">Services</a>
 <a class="font-headline font-bold tracking-tight text-slate-600 dark:text-slate-300 hover:text-[#f9c91b] dark:hover:text-[#f9c91b] transition-colors hover:translate-y-[-2px] transition-transform duration-200" href="#about">About</a>
+<a class="font-headline font-bold tracking-tight text-slate-600 dark:text-slate-300 hover:text-[#f9c91b] dark:hover:text-[#f9c91b] transition-colors hover:translate-y-[-2px] transition-transform duration-200" href="#gallery">Gallery</a>
 <a class="font-headline font-bold tracking-tight text-slate-600 dark:text-slate-300 hover:text-[#f9c91b] dark:hover:text-[#f9c91b] transition-colors hover:translate-y-[-2px] transition-transform duration-200" href="#contact">Contact</a>
 </div>
 <a class="volt-solid text-on-primary-fixed px-6 py-2 font-headline font-bold rounded-lg hover:translate-y-[-2px] transition-transform duration-200 active:scale-95 inline-block" href="#contact">
@@ -467,7 +557,7 @@
 <div class="max-w-2xl">
 <span class="inline-block bg-[#f9c91b] text-on-primary-container font-label text-xs font-bold tracking-widest px-3 py-1 mb-6 uppercase">Industrial Excellence</span>
 <h1 class="font-headline font-extrabold text-on-background tracking-tighter mb-6" style="font-size:3rem;line-height:1.2;">
-                    Empowering Your World with Reliable <span class="text-[#f9c91b]">Electrical Solutions</span>
+                    Empowering Your World with Reliable <span class="hero-electric-text">Electrical Solutions</span>
 </h1>
 <p class="text-on-surface-variant leading-relaxed mb-10 max-w-lg" style="font-size:16px;">
                     Delivering top-notch electrical contracting services for high-voltage infrastructure and industrial precision across the nation.
@@ -667,6 +757,125 @@
 </div>
 </div>
 </section>
+<!-- Gallery Section -->
+<section class="py-24 bg-surface-container-low" id="gallery">
+<div class="max-w-7xl mx-auto px-8">
+  <div class="text-center mb-12">
+    <span class="text-[#f9c91b] font-label text-xs font-bold uppercase tracking-widest mb-4 block">Our Work</span>
+    <h2 class="text-4xl font-headline font-extrabold text-on-background mb-4">Project Gallery</h2>
+    <p class="text-on-surface-variant max-w-xl mx-auto">A showcase of our industrial electrical projects across sectors — from substations to solar installations.</p>
+  </div>
+
+  <!-- Filter Buttons -->
+  <div class="flex flex-wrap justify-center gap-3 mb-10" id="gallery-filters">
+    <button class="gallery-filter-btn active" data-filter="all">All Projects</button>
+    <button class="gallery-filter-btn" data-filter="ht-lt">HT / LT Work</button>
+    <button class="gallery-filter-btn" data-filter="transformer">Transformer</button>
+    <button class="gallery-filter-btn" data-filter="substation">Substation</button>
+    <button class="gallery-filter-btn" data-filter="solar">Solar</button>
+    <button class="gallery-filter-btn" data-filter="wiring">Wiring</button>
+  </div>
+
+  <!-- Gallery Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+
+    <!-- Item 1 -->
+    <div class="gallery-item gallery-card relative overflow-hidden rounded-sm shadow-md group aspect-[4/3] bg-slate-200" data-category="ht-lt">
+      <img src="/images/enery-power.png" alt="HT Line Work Project" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
+      <div class="gallery-overlay">
+        <div>
+          <span class="bg-[#f9c91b] px-2 py-0.5 text-[10px] font-label uppercase text-on-primary-fixed mb-1 inline-block">HT / LT Work</span>
+          <h4 class="text-white font-headline font-bold text-lg leading-tight">High-Tension Line Installation</h4>
+          <p class="text-slate-300 text-xs mt-1">Industrial zone, Maharashtra</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 2 -->
+    <div class="gallery-item gallery-card relative overflow-hidden rounded-sm shadow-md group aspect-[4/3] bg-slate-200" data-category="transformer">
+      <img src="/images/construction.png" alt="Transformer Installation" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
+      <div class="gallery-overlay">
+        <div>
+          <span class="bg-[#f9c91b] px-2 py-0.5 text-[10px] font-label uppercase text-on-primary-fixed mb-1 inline-block">Transformer</span>
+          <h4 class="text-white font-headline font-bold text-lg leading-tight">Distribution Transformer Setup</h4>
+          <p class="text-slate-300 text-xs mt-1">Commercial complex, Gujarat</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 3 -->
+    <div class="gallery-item gallery-card relative overflow-hidden rounded-sm shadow-md group aspect-[4/3] bg-slate-200" data-category="solar">
+      <img src="/images/renewable-energy.png" alt="Solar Power Installation" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
+      <div class="gallery-overlay">
+        <div>
+          <span class="bg-[#f9c91b] px-2 py-0.5 text-[10px] font-label uppercase text-on-primary-fixed mb-1 inline-block">Solar</span>
+          <h4 class="text-white font-headline font-bold text-lg leading-tight">Rooftop Solar Power System</h4>
+          <p class="text-slate-300 text-xs mt-1">Residential society, Palghar</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 4 -->
+    <div class="gallery-item gallery-card relative overflow-hidden rounded-sm shadow-md group aspect-[4/3] bg-slate-200" data-category="substation">
+      <img src="/images/infrastruure.png" alt="Substation Maintenance" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
+      <div class="gallery-overlay">
+        <div>
+          <span class="bg-[#f9c91b] px-2 py-0.5 text-[10px] font-label uppercase text-on-primary-fixed mb-1 inline-block">Substation</span>
+          <h4 class="text-white font-headline font-bold text-lg leading-tight">Substation Preventive Maintenance</h4>
+          <p class="text-slate-300 text-xs mt-1">Infrastructure project, India</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 5 -->
+    <div class="gallery-item gallery-card relative overflow-hidden rounded-sm shadow-md group aspect-[4/3] bg-slate-200" data-category="wiring">
+      <img src="/images/trusted.png" alt="Industrial Wiring Project" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
+      <div class="gallery-overlay">
+        <div>
+          <span class="bg-[#f9c91b] px-2 py-0.5 text-[10px] font-label uppercase text-on-primary-fixed mb-1 inline-block">Wiring</span>
+          <h4 class="text-white font-headline font-bold text-lg leading-tight">Industrial Wiring & Panels</h4>
+          <p class="text-slate-300 text-xs mt-1">Factory, Vasai West</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 6 -->
+    <div class="gallery-item gallery-card relative overflow-hidden rounded-sm shadow-md group aspect-[4/3] bg-slate-200" data-category="ht-lt">
+      <img src="/images/hero-thumbnail.png" alt="Underground Line Work" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
+      <div class="gallery-overlay">
+        <div>
+          <span class="bg-[#f9c91b] px-2 py-0.5 text-[10px] font-label uppercase text-on-primary-fixed mb-1 inline-block">HT / LT Work</span>
+          <h4 class="text-white font-headline font-bold text-lg leading-tight">Underground Cable Laying</h4>
+          <p class="text-slate-300 text-xs mt-1">Power distribution, Maharashtra</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /gallery-grid -->
+</div>
+</section>
+
+<script>
+(function() {
+  const filters = document.querySelectorAll('.gallery-filter-btn');
+  const items = document.querySelectorAll('.gallery-item');
+  filters.forEach(btn => {
+    btn.addEventListener('click', function() {
+      filters.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      const cat = this.dataset.filter;
+      items.forEach(item => {
+        if (cat === 'all' || item.dataset.category === cat) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+    });
+  });
+})();
+</script>
+
 <!-- Contact Section -->
 <section class="py-24 bg-on-secondary-fixed text-white overflow-hidden relative" id="contact">
 <div class="max-w-7xl mx-auto px-8 relative z-10">
@@ -676,7 +885,13 @@
 <p class="text-secondary-fixed text-lg">Contact our expert team today for professional electrical consultation and implementation services.</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-<a href="/cdn-cgi/l/email-protection#f08082998384999e95959c9593b0979d91999cde939f9d"><span class="__cf_email__" data-cfemail="fc8c8e958f889592999990999fbc9b919d9590d29f9391">[email&#160;protected]</span></a>
+<a class="group bg-slate-800/50 hover:bg-[#f9c91b] p-10 rounded-2xl border border-slate-700 hover:border-[#f9c91b] transition-all duration-300 flex flex-col items-center text-center" href="mailto:pristineelec@gmail.com">
+<div class="w-16 h-16 rounded-full bg-[#f9c91b] group-hover:bg-white flex items-center justify-center mb-6 transition-colors">
+<span class="material-symbols-outlined text-slate-900 text-3xl">mail</span>
+</div>
+<h3 class="text-xl font-headline font-bold mb-2 group-hover:text-slate-900">Email Us</h3>
+<p class="text-secondary-fixed group-hover:text-slate-800 font-medium text-lg">pristineelec@gmail.com</p>
+</a>
 <a class="group bg-slate-800/50 hover:bg-[#f9c91b] p-10 rounded-2xl border border-slate-700 hover:border-[#f9c91b] transition-all duration-300 flex flex-col items-center text-center" href="tel:+919975678803">
 <div class="w-16 h-16 rounded-full bg-[#f9c91b] group-hover:bg-white flex items-center justify-center mb-6 transition-colors">
 <span class="material-symbols-outlined text-slate-900 text-3xl">call</span>
@@ -703,22 +918,22 @@
 <div class="absolute -top-10 -left-10 select-none">
 <span class="material-symbols-outlined text-[10rem] text-[#f9c91b]/5 font-black" style="font-variation-settings: 'FILL' 1;">format_quote</span>
 </div>
-<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-2xl p-12 md:p-16 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.08)] relative">
-<div class="flex flex-col md:flex-row gap-12 items-center md:items-start">
-<div class="relative shrink-0">
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-2xl p-12 md:p-16 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.08)] relative testimonial-card">
+<div class="flex flex-col md:flex-row gap-12 items-center md:items-start testimonial-inner">
+<div class="relative shrink-0 testimonial-avatar-wrap">
 <div class="absolute inset-0 bg-[#f9c91b] rounded-full -m-1 rotate-6"></div>
 <img alt="Vilas M. Bhoir" class="relative w-32 h-32 object-cover rounded-full border-4 border-white shadow-lg" src="/images/testimonial-alex.jpg" onerror="this.style.display='none'"/>
 </div>
-<div class="flex-1 text-center md:text-left">
+<div class="flex-1 text-center md:text-left testimonial-body">
 <div class="mb-6">
-<div class="flex justify-center md:justify-start gap-1 mb-4">
+<div class="flex justify-center md:justify-start gap-1 mb-4 testimonial-stars">
 <span class="material-symbols-outlined text-[#f9c91b] text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
 <span class="material-symbols-outlined text-[#f9c91b] text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
 <span class="material-symbols-outlined text-[#f9c91b] text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
 <span class="material-symbols-outlined text-[#f9c91b] text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
 <span class="material-symbols-outlined text-[#f9c91b] text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
 </div>
-<blockquote class="text-2xl font-headline font-bold text-on-background leading-relaxed italic">
+<blockquote class="text-2xl font-headline font-bold text-on-background leading-relaxed italic testimonial-quote">
                                     "We engaged Pristine Electro Solutions for our building's meter passing and transformer setup. They handled everything professionally and delivered without any hassle. Highly recommended!"
                                 </blockquote>
 </div>
@@ -735,7 +950,7 @@
 </main>
 <!-- Footer -->
 <footer class="bg-slate-900 dark:bg-black border-t border-slate-800 py-12 px-8">
-<div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto">
 <div class="space-y-6">
 <div class="mb-6">
 <img alt="Pristine Electro Solutions Logo" class="h-10 w-auto object-contain brightness-0 invert" src="/images/footer-logo.png"/>
@@ -749,15 +964,7 @@
 <span class="material-symbols-outlined text-[#f9c91b] cursor-pointer hover:text-white transition-colors">contact_phone</span>
 </div>
 </div>
-<div>
-<h4 class="font-headline font-bold text-white mb-6 uppercase tracking-widest text-xs">Quick Links</h4>
-<ul class="space-y-4 font-['Inter'] text-sm">
-<li><a class="text-slate-400 hover:text-white transition-colors" href="#">Privacy Policy</a></li>
-<li><a class="text-slate-400 hover:text-white transition-colors" href="#">Terms of Service</a></li>
-<li><a class="text-slate-400 hover:text-white transition-colors" href="#">Service Areas</a></li>
-<li><a class="text-slate-400 hover:text-white transition-colors" href="#">Emergency Support</a></li>
-</ul>
-</div>
+
 <div>
 <h4 class="font-headline font-bold text-white mb-6 uppercase tracking-widest text-xs">Contact Us</h4>
 <ul class="space-y-4 font-['Inter'] text-sm text-slate-400">
@@ -767,7 +974,7 @@
                 </li>
 <li class="flex gap-3">
 <span class="material-symbols-outlined text-[#f9c91b] text-sm">mail</span>
-                    <a href="/cdn-cgi/l/email-protection#3d4d4f544e495453585851585e7d5a505c5451135e5250"><span class="__cf_email__" data-cfemail="b4c4c6ddc7c0dddad1d1d8d1d7f4d3d9d5ddd89ad7dbd9">[email&#160;protected]</span></a>
+                    <a href="mailto:pristineelec@gmail.com" class="hover:text-[#f9c91b] transition-colors">pristineelec@gmail.com</a>
                 </li>
 <li class="flex gap-3">
 <span class="material-symbols-outlined text-[#f9c91b] text-sm">call</span>
